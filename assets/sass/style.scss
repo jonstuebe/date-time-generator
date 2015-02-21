@@ -11,17 +11,17 @@ $color-green: #6DBD99;
 }
 
 html {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 *, *:before, *:after {
-  box-sizing: inherit;
+	box-sizing: inherit;
 }
 
 html, body {
-  width: 100%;
-  height: 100%;
-  font-family: 'Lato', sans-serif;
-  background-color: $color-bg;
+	width: 100%;
+	height: 100%;
+	font-family: 'Lato', sans-serif;
+	background-color: $color-bg;
 }
 
 .container-fluid {
@@ -29,29 +29,51 @@ html, body {
 }
 
 h1, h2, h3, h4, ol, ul, p, strong, b, em, i, legend, label {
-  @include text-smooth;
+	@include text-smooth;
 	user-select: none;
 }
 
+header {
+	h1 {
+		margin-bottom: 0;
+	}
+	h4 {
+		margin: 0;
+	}
+
+	p {
+		color: #fff;
+		margin-bottom: 1.5em;
+	}
+}
+
 h1, h2, h3, h4, legend {
-  color: #fff;
+	color: #fff;
+
+	a {
+		color: $color-green;
+
+		&:hover {
+			text-decoration: none;
+			color: lighten($color-green, 5%);
+		}
+	}
 }
 
 h1 {
-  font-size: 2.5em;
-	margin-bottom: .2em;
+	font-size: 2.5em;
 }
 
 h2 {
-  font-size: 2.2em;
+	font-size: 2.2em;
 }
 
 h3 {
-  font-size: 1.9em;
+	font-size: 1.9em;
 }
 
 h4, legend {
-  font-size: 1.5em;
+	font-size: 1.5em;
 }
 
 legend {
@@ -59,14 +81,14 @@ legend {
 }
 
 .hr {
-  background-color: #434A4D;
-  height: 1px;
+	background-color: #434A4D;
+	height: 1px;
 	margin: 2em 0;
 }
 
 ol, ul, p, strong, b, em, i {
-  
-  color: $color-green;
+
+	color: $color-green;
 }
 
 
@@ -92,21 +114,21 @@ ol, ul, p, strong, b, em, i {
 
 	user-select: none;
 	margin-bottom: 1em;
-  
-  select {
-    background-color: transparent;
-    border: $color-green 1px solid;
-    outline: 0;
-    color: #fff;
-    @include text-smooth;
-    box-shadow: none;
+
+	select {
+		background-color: transparent;
+		border: $color-green 1px solid;
+		outline: 0;
+		color: #fff;
+		@include text-smooth;
+		box-shadow: none;
 		font-size: 1.2em;
-    
-    &:focus {
-      outline: 0;
-      box-shadow: 0 0 0 .075rem #fff, 0 0 0 .1rem $color-green;
-    }
-  }
+
+		&:focus {
+			outline: 0;
+			box-shadow: 0 0 0 .075rem #fff, 0 0 0 .1rem $color-green;
+		}
+	}
 }
 
 label {
