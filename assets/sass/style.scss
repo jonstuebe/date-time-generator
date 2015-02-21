@@ -231,7 +231,18 @@ label {
 	padding-bottom: 2.5em;
 	background-color: $color-green;
 	
-	.reset {
+	#copy {
+		margin-right: 1em;
+		transition: border 100ms linear;
+
+		&.active, &:active {
+			border: 2px solid darken($color-green, 25%);
+			position: relative;
+			top: 1px;
+		}
+	}
+
+	input[type="submit"] {
 		@include text-smooth;
 		border: 2px solid #fff;
 		padding: .7rem 1rem;
@@ -265,8 +276,7 @@ label {
 code {
 	
 	font-weight: bold;
-	height: 42px;
-	line-height: 42px;
+	
 	
 	&.hide {
 		display: none;

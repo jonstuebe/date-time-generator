@@ -142,6 +142,29 @@ $(function() {
 		saveSession();
 	}
 
+	ZeroClipboard.config({ swfPath: 'assets/flash/ZeroClipboard.swf' });
+	var client = new ZeroClipboard( $('#copy') );
+
+	$("#copy").on('click', function(e){
+		e.preventDefault();
+	});
+
+	client.on('ready', function(event){
+
+		client.on( "copy", function (event) {
+		  var clipboard = event.clipboardData;
+		  clipboard.setData( "text/plain", $("code." + $("#language").val()).text() );
+		});
+
+		client.on( "aftercopy", function( event ){
+	    	$("#copy").addClass('active');
+	    	setTimeout(function() {
+	    		$("#copy").removeClass('active');
+	    	}, 100);
+		});
+
+	});
+
 	rememberSession();
 	buildViews();
 

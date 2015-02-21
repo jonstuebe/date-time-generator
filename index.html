@@ -11,10 +11,6 @@
 	<link rel="stylesheet" href="assets/css/style.css" media="screen" type="text/css" />
 
 	<script src="assets/js/vendor/modernizr.js"></script>
-	<script src="assets/js/vendor/jquery.min.js"></script>
-	<script src="assets/js/vendor/jquery.hotkeys.js"></script>
-	<script src="assets/js/vendor/moment.min.js"></script>
-	<script src="assets/js/index.js"></script>
 
 </head>
 
@@ -69,9 +65,9 @@
 
 						<div class="select">
 							<select aria-label="Select Language" id="language" name="language" class="form-control">
-								<option value="js">Javascript</option>
+								<option selected value="js">Javascript</option>
 								<option value="php">PHP</option>
-								<option selected value="ruby">Ruby</option>
+								<option value="ruby">Ruby</option>
 							</select>
 							<span></span>
 						</div>
@@ -311,10 +307,14 @@
 						<div class="container-fluid">
 							<div class="row">
 								<div class="code-preview col-sm-6">
+									
 									<h4>Code</h4>
+									
+									<input type="submit" id="copy" value="Copy" />
 									<code class="js hide">moment().format('<span></span>')</code>
 									<code class="php hide">date('<span></span>')</code>
 									<code class="ruby hide">Time.new().strftime "<span></span>"</code>
+
 								</div>
 								<div class="live-preview col-sm-6">
 									<h4>Live Preview</h4>
@@ -332,6 +332,12 @@
 
 	</div>
 
+	<script src="assets/js/vendor/jquery.min.js"></script>
+	<script src="assets/js/vendor/jquery.hotkeys.js"></script>
+	<script src="assets/js/vendor/moment.min.js"></script>
+	<script src="assets/js/vendor/ZeroClipboard.min.js"></script>
+	<script src="assets/js/index.js"></script>
+
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -342,5 +348,6 @@
 	  ga('send', 'pageview');
 
 	</script>
+	
 </body>
 </html>
