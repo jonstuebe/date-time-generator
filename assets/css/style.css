@@ -1063,7 +1063,7 @@ hr {
   text-shadow: 0 0 0 #000; }
 
 /* Dropdown arrow */
-.select:after {
+.select span:after {
   position: absolute;
   top: 50%;
   right: 1.25rem;
@@ -1114,7 +1114,7 @@ hr {
   .select select {
     z-index: 1;
     padding: 0.5rem 1.5rem 0.5rem 1rem; }
-  .select:after {
+  .select span:after {
     z-index: 5; }
   .select:before {
     position: absolute;
@@ -1351,6 +1351,16 @@ ol, ul, p, strong, b, em, i {
     .select select:focus {
       outline: 0;
       box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.1rem #6DBD99; }
+  .select span {
+    background-color: #459973;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2.25em;
+    height: 100%;
+    pointer-events: none; }
+    .select span:after {
+      color: #fff; }
 
 label {
   color: #6DBD99;

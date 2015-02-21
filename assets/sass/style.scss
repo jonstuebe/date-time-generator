@@ -129,6 +129,20 @@ ol, ul, p, strong, b, em, i {
 			box-shadow: 0 0 0 .075rem #fff, 0 0 0 .1rem $color-green;
 		}
 	}
+
+	span {
+		background-color: darken($color-green, 15%);
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 2.25em;
+		height: 100%;
+		pointer-events: none;
+
+		&:after {
+			color: #fff;
+		}
+	}
 }
 
 label {
