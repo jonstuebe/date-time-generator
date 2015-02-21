@@ -105,6 +105,8 @@ $(function() {
 		
 		$('.directions').addClass('hide');
 		$(".directions-" + language).removeClass('hide');
+		
+		$('.code-preview h4').text('Code (' + $('#language option[value="' + language + '"]').text() + ')');
 	}
 
 	$("#language").on('change', checkFormats);

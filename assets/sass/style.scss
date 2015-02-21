@@ -123,6 +123,7 @@ ol, ul, p, strong, b, em, i {
 		@include text-smooth;
 		box-shadow: none;
 		font-size: 1.2em;
+		padding-right: 2.5em;
 
 		&:focus {
 			outline: 0;

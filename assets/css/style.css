@@ -1347,7 +1347,8 @@ ol, ul, p, strong, b, em, i {
     color: #fff;
     -webkit-font-smoothing: antialiased;
     box-shadow: none;
-    font-size: 1.2em; }
+    font-size: 1.2em;
+    padding-right: 2.5em; }
     .select select:focus {
       outline: 0;
       box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.1rem #6DBD99; }
