@@ -1425,7 +1425,14 @@ label {
   width: 100%;
   padding-bottom: 2.5em;
   background-color: #6DBD99; }
-  .fixed .reset {
+  .fixed #copy {
+    margin-right: 1em;
+    transition: border 100ms linear; }
+    .fixed #copy.active, .fixed #copy:active {
+      border: 2px solid #357558;
+      position: relative;
+      top: 1px; }
+  .fixed input[type="submit"] {
     -webkit-font-smoothing: antialiased;
     border: 2px solid #fff;
     padding: 0.7rem 1rem;
@@ -1435,9 +1442,9 @@ label {
     outline: none;
     -webkit-appearance: none;
     background-color: transparent; }
-    .fixed .reset:hover {
+    .fixed input[type="submit"]:hover {
       border: 2px solid #fff; }
-    .fixed .reset:active {
+    .fixed input[type="submit"]:active {
       background-color: #7fc5a5;
       color: #fff; }
   .fixed .input-text {
@@ -1447,9 +1454,7 @@ label {
       border: 2px solid #fff; }
 
 code {
-  font-weight: bold;
-  height: 42px;
-  line-height: 42px; }
+  font-weight: bold; }
   code.hide {
     display: none; }
 
