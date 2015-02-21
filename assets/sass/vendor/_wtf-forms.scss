@@ -129,7 +129,7 @@
   text-shadow: 0 0 0 #000;
 }
 /* Dropdown arrow */
-.select:after {
+.select span:after {
   position: absolute;
   top: 50%;
   right: 1.25rem;
@@ -189,7 +189,7 @@
     z-index: 1;
     padding: .5rem 1.5rem .5rem 1rem;
   }
-  .select:after {
+  .select span:after {
     z-index: 5;
   }
   .select:before {
