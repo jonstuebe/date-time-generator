@@ -4,13 +4,13 @@ A Simple Date/Time string format generator built in html/js.
 
 ## Supports:
 
--Javascript
--PHP
--Ruby (Coming Soon)
+- Javascript
+- PHP
+- Ruby (Coming Soon)
 
 ### Features:
 
--Page remembers your clicks on reload (LocalStorage)
+- Page remembers your clicks on reload (LocalStorage)
 
 ### Ideas, Forks, Issues
 
