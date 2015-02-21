@@ -1387,6 +1387,10 @@ label {
   .btn:active {
     background-color: #3b3e41;
     color: #cccccc; }
+  .btn.preset {
+    display: inline-block;
+    margin-right: 1em;
+    margin-bottom: 1em; }
 
 .format-hide {
   display: none; }
