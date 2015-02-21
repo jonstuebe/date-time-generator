@@ -1,0 +1,276 @@
+@import "bourbon";
+@import "vendor/normalize";
+@import "vendor/bootstrap-grid";
+@import "vendor/wtf-forms";
+
+$color-bg: #282A2C;
+$color-green: #6DBD99;
+
+@mixin text-smooth() {
+	-webkit-font-smoothing: antialiased;
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  background-color: $color-bg;
+}
+
+.container-fluid {
+	padding: 0 2.5em;
+}
+
+h1, h2, h3, h4, ol, ul, p, strong, b, em, i, legend, label {
+  @include text-smooth;
+	user-select: none;
+}
+
+h1, h2, h3, h4, legend {
+  color: #fff;
+}
+
+h1 {
+  font-size: 2.5em;
+	margin-bottom: .2em;
+}
+
+h2 {
+  font-size: 2.2em;
+}
+
+h3 {
+  font-size: 1.9em;
+}
+
+h4, legend {
+  font-size: 1.5em;
+}
+
+legend {
+
+}
+
+.hr {
+  background-color: #434A4D;
+  height: 1px;
+	margin: 2em 0;
+}
+
+ol, ul, p, strong, b, em, i {
+  
+  color: $color-green;
+}
+
+
+
+.directions {
+	
+	color: $color-green;
+	@include text-smooth;
+	margin-left: 1em;
+	
+	a {
+		color: #fff;
+		text-decoration: underline;
+		
+		&:hover {
+			color: #fff;
+			text-decoration: none;
+		}
+	}
+}
+
+.select {
+
+	user-select: none;
+	margin-bottom: 1em;
+  
+  select {
+    background-color: transparent;
+    border: $color-green 1px solid;
+    outline: 0;
+    color: #fff;
+    @include text-smooth;
+    box-shadow: none;
+		font-size: 1.2em;
+    
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 .075rem #fff, 0 0 0 .1rem $color-green;
+    }
+  }
+}
+
+label {
+	color: $color-green;
+	display: block;
+	margin-bottom: .8em;
+	font-size: 1.2em;
+	@include text-smooth;
+}
+
+.btn {
+	
+	border: 1px solid $color-green;
+	background-color: transparent;
+	color: #fff;
+	padding: .7rem 1rem;
+	font-size: 1.2em;
+	line-height: 1.5;
+	user-select: none;
+	@include text-smooth;
+	
+	&:hover {
+		text-decoration: none;
+		cursor: pointer;
+		color: #fff;
+		border: 1px solid lighten($color-green, 25%);
+	}
+	
+	&:active {
+		background-color: lighten($color-bg, 8%);
+		color: darken(#fff, 20%);
+	}
+	
+	&.date {
+		
+	}
+}
+
+.format-hide {
+	display: none;
+}
+
+.help-text {
+	font-size: 1em;
+	color: #fff;
+	@include text-smooth;
+	user-select: none;
+}
+
+.input-text {
+	outline: none;
+	border: 1px solid $color-green;
+	background-color: transparent;
+	padding: .7rem 1rem;
+	color: #fff;
+	font-size: 1.2em;
+	@include text-smooth;
+	
+	&.disabled {
+		&:hover {
+			border: 1px solid $color-green;
+		}
+	}
+	
+	&:hover, &:focus {
+		text-decoration: none;
+		color: #fff;
+		border: 1px solid lighten($color-green, 25%);
+	}
+}
+
+.preview-push {
+	height: 23em;
+	
+	@media screen and (min-width: 750px) {
+		height: 200px;
+	}
+}
+
+.fixed {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding-bottom: 2.5em;
+	background-color: $color-green;
+	
+	.reset {
+		@include text-smooth;
+		border: 2px solid #fff;
+		padding: .7rem 1rem;
+		color: #fff;
+		font-size: 1.2em;
+		margin-left: .25em;
+		outline: none;
+		-webkit-appearance: none;
+		background-color: transparent;
+		
+		&:hover {
+			border: 2px solid #fff;
+		}
+		
+		&:active {
+			background-color: lighten($color-green, 5%);
+			color: #fff;
+		}
+	}
+	
+	.input-text {
+		border: 2px solid #fff;
+		
+		&:hover {
+			border: 2px solid #fff;
+		}
+	}
+}
+
+code {
+	
+	font-weight: bold;
+	height: 42px;
+	line-height: 42px;
+	
+	&.hide {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	
+	.fixed {
+		
+		position: relative;
+		bottom: auto;
+		left: auto;
+		margin-top: 2em;
+		
+		.container-fluid {
+			padding: 0;
+		}
+		
+		background-color: $color-green;
+		
+		&:before, &:after {
+			content: "";
+			position: absolute;
+			top: 0;
+			background-color: $color-green;
+			width: 500px;
+			height: 100%;
+		}
+		
+		&:before {
+			left: 100%;
+		}
+		
+		&:after {
+			right: 100%;
+		}
+		
+	}
+	
+	.preview-push {
+		display: none;
+	}
+	
+}

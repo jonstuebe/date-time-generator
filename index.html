@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Date/Time Generator - Jon Stuebe</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:300,400,700' />
+	<link rel="stylesheet" href="/assets/css/style.css" media="screen" type="text/css" />
+
+	<script src="/assets/js/vendor/modernizr.js"></script>
+	<script src="/assets/js/vendor/jquery.min.js"></script>
+	<script src="/assets/js/vendor/jquery.hotkeys.js"></script>
+	<script src="/assets/js/vendor/moment.min.js"></script>
+	<script src="/assets/js/index.js"></script>
+
+</head>
+
+<body>
+
+	<div class="container-fluid">
+
+		<div class="row">
+
+			<div class="row">
+				<div class="col-xs-12">
+					<h1>Date/Time Generator</h1>      
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-8">
+					<p>Click on any buttons below to generate the code string and see a live preview. To add any symbols just type them in browser. To undo hit the backspace key.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="hr"></div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<form action="#">
+
+				<div class="row">
+					<div class="form-group col-xs-12">
+						<label for="language">Language</label>
+
+						<div class="select">
+							<select aria-label="Select Language" id="language" name="language" class="form-control">
+								<option selected value="js">Javascript</option>
+								<option  value="php">PHP</option>
+								<option value="ruby" disabled>Ruby (Coming Soon)</option>
+							</select>
+						</div>
+
+						<span class="directions directions-js hide">To simplify date methods in javascript the <a href="http://momentjs.com/" target="_blank">moment.js</a> library is required.</span>
+					</div>
+
+				</div> <!--end of .row-->
+				<div class="row">
+
+					<div class="col-xs-12">
+						<div class="row">
+							<div class="col-xs-12">
+								<h4>Day of Month</h4>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="D" data-php-format="j"></a>
+								<p class="help-text">without leading zeros</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="Do" data-php-format="jS"></a>
+								<p class="help-text">without leading zeros with suffix</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="DD" data-php-format="d"></a>
+								<p class="help-text">2 digits with leading zeros</p>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-12">
+								<h4>Day of Week</h4>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="d" data-php-format="w"></a>
+								<p class="help-text">without leading zeros</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="do" data-php-format=""></a>
+								<p class="help-text">with leading zeros with suffix</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="dd" data-php-format=""></a>
+								<p class="help-text">two character abbreviation</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="ddd" data-php-format="D"></a>
+								<p class="help-text">three character abbreviation</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="dddd" data-php-format="l"></a>
+								<p class="help-text">full textual representation</p>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-12">
+								<h4>Day of Year</h4>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="DDD" data-php-format="z"></a>
+								<p class="help-text">without leading zeros</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="DDDo"></a>
+								<p class="help-text">without leading zeros with suffix</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="DDDD"></a>
+								<p class="help-text">with leading zeros</p>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-12">
+								<h4>Week of Year</h4>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="w"></a>
+								<p class="help-text">without leading zeros</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="wo"></a>
+								<p class="help-text">without leading zeros with suffix</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="ww" data-php-format="W"></a>
+								<p class="help-text">with leading zeros</p>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-12">
+								<h4>Year</h4>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="YY" data-php-format="y"></a>
+								<p class="help-text">two digit</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="YYYY" data-php-format="Y"></a>
+								<p class="help-text">four digit</p>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-12">
+								<h4>Month</h4>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="M" data-php-format="n"></a>
+								<p class="help-text">without leading zeros</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="Mo"></a>
+								<p class="help-text">without leading zeros with suffix</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="MM" data-php-format="m"></a>
+								<p class="help-text">with leading zeros</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="MMM" data-php-format="M"></a>
+								<p class="help-text">abbreviation</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="MMMM" data-php-format="F"></a>
+								<p class="help-text">full textual representation</p>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-12">
+								<h3>Time</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<h4>Hours</h4>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date live" data-js-format="h" data-php-format="g"></a>
+								<p class="help-text">without leading zeros (12 hour)</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date live" data-js-format="hh" data-php-format="h"></a>
+								<p class="help-text">with leading zeros (12 hour)</p>
+							</div>
+
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date live" data-js-format="H" data-php-format="G"></a>
+								<p class="help-text">without leading zeros (24 hour)</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date live" data-js-format="HH" data-php-format="H"></a>
+								<p class="help-text">with leading zeros (24 hour)</p>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-12">
+								<h4>Minutes</h4>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date live" data-js-format="m"></a>
+								<p class="help-text">without leading zeros</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date live" data-js-format="mm" data-php-format="i"></a>
+								<p class="help-text">with leading zeros</p>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-12">
+								<h4>Seconds</h4>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date live" data-js-format="s"></a>
+								<p class="help-text">without leading zeros</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date live" data-js-format="ss" data-php-format="s"></a>
+								<p class="help-text">with leading zeros</p>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-12">
+								<h4>AM/PM</h4>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="A" data-php-format="A"></a>
+								<p class="help-text">uppercase</p>
+							</div>
+							<div class="col-xs-4 col-sm-2">
+								<a class="btn date" data-js-format="a" data-php-format="a"></a>
+								<p class="help-text">lowercase</p>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-xs-12">
+								<h4>Timezone</h4>
+							</div>
+						</div> <!--end of .row-->
+						<div class="row">
+							<div class="col-sm-2">
+								<a class="btn date" data-js-format="Z" data-php-format="P"></a>
+								<p class="help-text">Difference to GMT in hours with colon</p>
+							</div>
+							<div class="col-sm-2">
+								<a class="btn date" data-js-format="ZZ" data-php-format="O"></a>
+								<p class="help-text">Difference to GMT in hours</p>
+							</div>
+						</div> <!--end of .row-->
+					</div>
+
+				</div>
+				<div class="row">
+					<div class="preview-push"></div>
+					<div class="fixed">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="code-preview col-sm-6">
+									<h4>Code</h4>
+									<code class="php hide">date('<span></span>')</code>
+									<!--<code class="ruby hide">moment().format(<span></span>)</code>-->
+									<code class="js hide">moment().format('<span></span>')</code>
+								</div>
+								<div class="live-preview col-sm-6">
+									<h4>Live Preview</h4>
+									<input type="text" disabled class="input-text disabled" value="" />
+									<input type="submit" value="Reset" class="reset" />
+								</div>
+							</div>
+						</div>
+					</div> <!--end of .fixed-->
+				</div>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</body>
+
+</html>
