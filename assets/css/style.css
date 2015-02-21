@@ -1440,6 +1440,7 @@ label {
       background-color: #7fc5a5;
       color: #fff; }
   .fixed .input-text {
+    width: 80%;
     border: 2px solid #fff; }
     .fixed .input-text:hover {
       border: 2px solid #fff; }
