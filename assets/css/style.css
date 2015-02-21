@@ -1290,12 +1290,24 @@ h1, h2, h3, h4, ol, ul, p, strong, b, em, i, legend, label {
   -webkit-font-smoothing: antialiased;
   user-select: none; }
 
+header h1 {
+  margin-bottom: 0; }
+header h4 {
+  margin: 0; }
+header p {
+  color: #fff;
+  margin-bottom: 1.5em; }
+
 h1, h2, h3, h4, legend {
   color: #fff; }
+  h1 a, h2 a, h3 a, h4 a, legend a {
+    color: #6DBD99; }
+    h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, legend a:hover {
+      text-decoration: none;
+      color: #7fc5a5; }
 
 h1 {
-  font-size: 2.5em;
-  margin-bottom: 0.2em; }
+  font-size: 2.5em; }
 
 h2 {
   font-size: 2.2em; }
