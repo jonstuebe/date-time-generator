@@ -6,11 +6,11 @@ A Simple Date/Time string format generator built in html/js.
 
 - Javascript
 - PHP
-- Ruby (Coming Soon)
+- Ruby
 
 ### Features:
 
-- Page remembers your clicks on reload (LocalStorage)
+- Page remembers your clicks on reload (Coming Soon)
 
 ### Ideas, Forks, Issues
 

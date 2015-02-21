@@ -177,8 +177,10 @@ label {
 		color: darken(#fff, 20%);
 	}
 	
-	&.date {
-		
+	&.preset {
+		display: inline-block;
+		margin-right: 1em;
+		margin-bottom: 1em;
 	}
 }
 

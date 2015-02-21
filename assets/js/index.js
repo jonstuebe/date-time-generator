@@ -1,8 +1,42 @@
 $(function() {
 	
-	var code = [],
+	var languages = [ {name: 'js', value: 'Javascript'}, {name: 'php', value: 'PHP'}, { name: 'ruby', value: 'Ruby'} ],
+		code = {},
 		preview = [],
 		jsFormat = [];
+
+	function resetStorage()
+	{
+		$.each(languages, function(){
+			code[this.name] = [];
+		});
+		preview = [];
+		jsFormat = [];
+	}
+
+	function addCode(btn)
+	{
+		$.each(languages, function(){
+			if(typeof btn == 'string')
+			{
+				code[this.name].push(btn);
+			}
+			else
+			{
+				code[this.name].push($(btn).data(this.name + '-format'));
+			}
+		});
+	}
+
+	function removeLastCode()
+	{
+		var language = $("#language").val();
+		$.each(code, function(){
+			this.splice(-1,1);
+		});
+	}
+
+	resetStorage();
 
 	$('.btn.date').each(function(){
 		$(this).text(moment().format($(this).data('js-format'))); // insert date string based of current time
@@ -10,11 +44,12 @@ $(function() {
 
 	setInterval(function(){
 
+		$('.btn.date.live').each(function(){
+			$(this).text(moment().format($(this).data('js-format')));
+		});
+
 		if(jsFormat != null)
 		{
-			$('.btn.date.live').each(function(){
-				$(this).text(moment().format($(this).data('js-format')));
-			});
 			var jsString = '';
 			$.each(jsFormat, function(index, val){
 				jsString += moment().format(val);
@@ -27,12 +62,16 @@ $(function() {
 	$('.btn.date').on('click', function(e){
 		
 		var language = $('#language').val(),
-				format = $(this).data(language + '-format'),
-				momentFormat = $(this).data('js-format');
+			momentFormat = $(this).data('js-format');
+
+		if($(this).hasClass('preset'))
+		{
+			resetStorage();
+		}
 		
 		preview.push(moment().format(momentFormat));
 		jsFormat.push(momentFormat);
-		code.push(format);
+		addCode(this);
 		buildViews();
 		
 		e.preventDefault();
@@ -40,9 +79,7 @@ $(function() {
 
 	$('.reset').on('click', function(e){
 		
-		code = [];
-		preview = [];
-		jsFormat = [];
+		resetStorage();
 		buildViews();
 		
 		e.preventDefault();
@@ -50,7 +87,7 @@ $(function() {
 
 	function insertChar(char)
 	{
-		code.push(char);
+		addCode(char);
 		preview.push(char);
 		jsFormat.push(char);
 		buildViews();
@@ -75,25 +112,22 @@ $(function() {
 		if(e.keyCode == 32)
 		{
 			insertChar(' ');
+			buildViews();
 			e.preventDefault();
 		}
 		else if(e.keyCode == 8)
 		{
-			code.splice(-1,1);
+			removeLastCode();
 			preview.splice(-1,1);
 			jsFormat.splice(-1,1);
+			buildViews();
 			e.preventDefault();
 		}
-		
-		buildViews();
 		
 	});
 
 	function checkFormats()
 	{
-		code = [];
-		preview = [];
-		jsFormat = [];
 		var language = $("#language").val();
 		$('.btn.date').each(function(){
 			$(this).parent().removeClass("format-hide");
@@ -107,6 +141,7 @@ $(function() {
 		$(".directions-" + language).removeClass('hide');
 		
 		$('.code-preview h4').text('Code (' + $('#language option[value="' + language + '"]').text() + ')');
+		buildViews();
 	}
 
 	$("#language").on('change', checkFormats);
@@ -119,6 +154,7 @@ $(function() {
 			localStorage.setItem('code', JSON.stringify(code));
 			localStorage.setItem('preview', JSON.stringify(preview));
 			localStorage.setItem('jsFormat', JSON.stringify(jsFormat));
+			localStorage.setItem('language', $("#language").val());
 		}
 	}
 
@@ -126,20 +162,36 @@ $(function() {
 	{
 		if(Modernizr.localstorage)
 		{
-			code = (JSON.parse(localStorage.getItem('code')) == null) ? [] : JSON.parse(localStorage.getItem('code'));
+			if(JSON.parse(localStorage.getItem('code')) != null)
+			{
+				code = JSON.parse(localStorage.getItem('code'));
+				console.log('not null', code);
+			}
+
 			preview = (JSON.parse(localStorage.getItem('preview')) == null) ? [] : JSON.parse(localStorage.getItem('preview'));
 			jsFormat = (JSON.parse(localStorage.getItem('jsFormat')) == null) ? [] : JSON.parse(localStorage.getItem('jsFormat'));
+
+			if(localStorage.getItem('language'))
+			{
+				$("#language")
+				.val(localStorage.getItem('language'))
+				.trigger('change');
+			}
 		}
 	}
 		
 	function buildViews()
 	{
 		var language = $("#language").val();
-		$('.code-preview code.' + language + ' span').text(code.join(''));
+
+		$('.code-preview code').each(function(){
+			$(this).find('span').text(code[$(this).data('language')].join(''));
+		});
+
 		$('.live-preview input[type="text"]').val(preview.join(''));
 		$('.code-preview code').addClass('hide');
 		$('.code-preview code.' + language).removeClass('hide');
-		saveSession();
+		// saveSession();
 	}
 
 	ZeroClipboard.config({ swfPath: 'assets/flash/ZeroClipboard.swf' });
@@ -165,7 +217,7 @@ $(function() {
 
 	});
 
-	rememberSession();
+	// rememberSession();
 	buildViews();
 
 });

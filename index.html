@@ -81,6 +81,26 @@
 
 				</div> <!--end of .row-->
 				<div class="row">
+					
+					<div class="col-xs-12">
+						<div class="row">
+							<div class="col-xs-12">
+								<h4>Presets</h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<a class="btn date preset" data-js-format="dddd, MMMM D YYYY" data-php-format="l, F j Y" data-ruby-format="%A, %B %e %Y"></a>
+								<a class="btn date preset" data-js-format="MM/DD/YYYY" data-php-format="m/d/Y" data-ruby-format="%m/%d/Y"></a>
+								<a class="btn date preset" data-js-format="MMMM YYYY" data-php-format="F Y" data-ruby-format="%B %Y"></a>
+								<a class="btn date preset" data-js-format="MMM D, YYYY" data-php-format="M j, Y" data-ruby-format="%B %e, %Y"></a>
+								<a class="btn date live preset" data-js-format="YYYY-MM-DD HH:mm:ss" data-php-format="Y-m-d H:i:s" data-ruby-format="%Y-%m-%d %H:%M:%S"></a>
+							</div>
+						</div>
+					</div>
+
+				</div> <!-- end of .row -->
+				<div class="row">
 
 					<div class="col-xs-12">
 						<div class="row">
@@ -197,7 +217,7 @@
 								<p class="help-text">without leading zeros with suffix</p>
 							</div>
 							<div class="col-xs-4 col-sm-2">
-								<a class="btn date" data-js-format="MM" data-php-format="m" data-ruby-format="%d"></a>
+								<a class="btn date" data-js-format="MM" data-php-format="m" data-ruby-format="%m"></a>
 								<p class="help-text">with leading zeros</p>
 							</div>
 							<div class="col-xs-4 col-sm-2">
@@ -311,9 +331,9 @@
 									<h4>Code</h4>
 									
 									<input type="submit" id="copy" value="Copy" />
-									<code class="js hide">moment().format('<span></span>')</code>
-									<code class="php hide">date('<span></span>')</code>
-									<code class="ruby hide">Time.new().strftime "<span></span>"</code>
+									<code data-language="js" class="js hide">moment().format('<span></span>')</code>
+									<code data-language="php" class="php hide">date('<span></span>')</code>
+									<code data-language="ruby" class="ruby hide">Time.new().strftime "<span></span>"</code>
 
 								</div>
 								<div class="live-preview col-sm-6">
