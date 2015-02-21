@@ -99,6 +99,9 @@ $(function() {
 			$(this).parent().removeClass("format-hide");
 			if($(this).data( language + '-format') == "" || !$(this).data( language + '-format')) $(this).parent().addClass('format-hide');
 		});
+
+		$('.code-preview code').addClass('hide');
+		$('.code-preview code.' + language).removeClass('hide');
 		
 		$('.directions').addClass('hide');
 		$(".directions-" + language).removeClass('hide');
@@ -129,10 +132,11 @@ $(function() {
 		
 	function buildViews()
 	{
-		$('.code-preview code span').text(code.join(''));
+		var language = $("#language").val();
+		$('.code-preview code.' + language + ' span').text(code.join(''));
 		$('.live-preview input[type="text"]').val(preview.join(''));
 		$('.code-preview code').addClass('hide');
-		$('.code-preview code.' + $('#language').val()).removeClass('hide');
+		$('.code-preview code.' + language).removeClass('hide');
 		saveSession();
 	}
 
