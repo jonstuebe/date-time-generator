@@ -26,6 +26,20 @@ $(function() {
 				code[this.name].push($(btn).data(this.name + '-format'));
 			}
 		});
+		
+		if(typeof btn != 'string')
+		{
+			gaEvent('clicked', 'button');
+		}
+	}
+
+	function gaEvent(type, category)
+	{
+		if(typeof ga == 'function')
+		{
+			var cat = (category) ? category : 'code';
+			ga('send', 'event', cat, type, $("#language").val(), 1);
+		}
 	}
 
 	function removeLastCode()
@@ -210,6 +224,7 @@ $(function() {
 
 		client.on( "aftercopy", function( event ){
 	    	$("#copy").addClass('active');
+	    	gaEvent('copied');
 	    	setTimeout(function() {
 	    		$("#copy").removeClass('active');
 	    	}, 100);
