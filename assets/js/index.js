@@ -1,6 +1,6 @@
 $(function() {
 	
-	var languages = [ {name: 'js', value: 'Javascript'}, {name: 'php', value: 'PHP'}, { name: 'ruby', value: 'Ruby'} ],
+	var languages = [ {name: 'js', value: 'Javascript'}, {name: 'php', value: 'PHP'}, { name: 'ruby', value: 'Ruby'}, { name: 'python', value: 'Python' } ],
 		code = {},
 		preview = [],
 		jsFormat = [];

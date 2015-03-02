@@ -68,6 +68,7 @@
 								<option selected value="js">Javascript</option>
 								<option value="php">PHP</option>
 								<option value="ruby">Ruby</option>
+								<option value="python">Python</option>
 							</select>
 							<span></span>
 						</div>
@@ -90,11 +91,11 @@
 						</div>
 						<div class="row">
 							<div class="col-xs-12">
-								<a class="btn date preset" data-js-format="dddd, MMMM D YYYY" data-php-format="l, F j Y" data-ruby-format="%A, %B %e %Y"></a>
-								<a class="btn date preset" data-js-format="MM/DD/YYYY" data-php-format="m/d/Y" data-ruby-format="%m/%d/Y"></a>
-								<a class="btn date preset" data-js-format="MMMM YYYY" data-php-format="F Y" data-ruby-format="%B %Y"></a>
-								<a class="btn date preset" data-js-format="MMM D, YYYY" data-php-format="M j, Y" data-ruby-format="%B %e, %Y"></a>
-								<a class="btn date live preset" data-js-format="YYYY-MM-DD HH:mm:ss" data-php-format="Y-m-d H:i:s" data-ruby-format="%Y-%m-%d %H:%M:%S"></a>
+								<a class="btn date preset" data-js-format="dddd, MMMM D YYYY" data-php-format="l, F j Y" data-ruby-format="%A, %B %e %Y" data-python-format="%A, %B %d %Y"></a>
+								<a class="btn date preset" data-js-format="MM/DD/YYYY" data-php-format="m/d/Y" data-ruby-format="%m/%d/%Y" data-python-format="%m/%d/%Y"></a>
+								<a class="btn date preset" data-js-format="MMMM YYYY" data-php-format="F Y" data-ruby-format="%B %Y" data-python-format="%B %Y"></a>
+								<a class="btn date preset" data-js-format="MMM D, YYYY" data-php-format="M j, Y" data-ruby-format="%B %e, %Y" data-python-format="%B %d, %Y"></a>
+								<a class="btn date live preset" data-js-format="YYYY-MM-DD HH:mm:ss" data-php-format="Y-m-d H:i:s" data-ruby-format="%Y-%m-%d %H:%M:%S" data-python-format="%Y-%m-%d %H:%M:%S"></a>
 							</div>
 						</div>
 					</div>
@@ -118,7 +119,7 @@
 								<p class="help-text">without leading zeros with suffix</p>
 							</div>
 							<div class="col-xs-4 col-sm-2">
-								<a class="btn date" data-js-format="DD" data-php-format="d" data-ruby-format="%d"></a>
+								<a class="btn date" data-js-format="DD" data-php-format="d" data-ruby-format="%d" data-python-format="%d"></a>
 								<p class="help-text">2 digits with leading zeros</p>
 							</div>
 						</div> <!--end of .row-->
@@ -129,7 +130,7 @@
 						</div> <!--end of .row-->
 						<div class="row">
 							<div class="col-xs-4 col-sm-2">
-								<a class="btn date" data-js-format="d" data-php-format="w"></a>
+								<a class="btn date" data-js-format="d" data-php-format="w" data-pythong-format="%w"></a>
 								<p class="help-text">without leading zeros</p>
 							</div>
 							<div class="col-xs-4 col-sm-2">
@@ -141,11 +142,11 @@
 								<p class="help-text">two character abbreviation</p>
 							</div>
 							<div class="col-xs-4 col-sm-2">
-								<a class="btn date" data-js-format="ddd" data-php-format="D" data-ruby-format="%a"></a>
+								<a class="btn date" data-js-format="ddd" data-php-format="D" data-ruby-format="%a" data-python-format="%a"></a>
 								<p class="help-text">three character abbreviation</p>
 							</div>
 							<div class="col-xs-4 col-sm-2">
-								<a class="btn date" data-js-format="dddd" data-php-format="l" data-ruby-format="%A"></a>
+								<a class="btn date" data-js-format="dddd" data-php-format="l" data-ruby-format="%A" data-python-format="%A"></a>
 								<p class="help-text">full textual representation</p>
 							</div>
 						</div> <!--end of .row-->
@@ -164,7 +165,7 @@
 								<p class="help-text">without leading zeros with suffix</p>
 							</div>
 							<div class="col-xs-4 col-sm-2">
-								<a class="btn date" data-js-format="DDDD" data-ruby-format="%j"></a>
+								<a class="btn date" data-js-format="DDDD" data-ruby-format="%j" data-python-format="%j"></a>
 								<p class="help-text">with leading zeros</p>
 							</div>
 						</div> <!--end of .row-->
@@ -183,7 +184,7 @@
 								<p class="help-text">without leading zeros with suffix</p>
 							</div>
 							<div class="col-xs-4 col-sm-2">
-								<a class="btn date" data-js-format="ww" data-php-format="W" data-ruby-format="%U"></a>
+								<a class="btn date" data-js-format="ww" data-php-format="W" data-ruby-format="%U" data-python-format="%U"></a>
 								<p class="help-text">with leading zeros</p>
 							</div>
 						</div> <!--end of .row-->
@@ -194,11 +195,11 @@
 						</div> <!--end of .row-->
 						<div class="row">
 							<div class="col-xs-4 col-sm-2">
-								<a class="btn date" data-js-format="YY" data-php-format="y" data-ruby-format="%y"></a>
+								<a class="btn date" data-js-format="YY" data-php-format="y" data-ruby-format="%y" data-python-format="%y"></a>
 								<p class="help-text">two digit</p>
 							</div>
 							<div class="col-xs-4 col-sm-2">
-								<a class="btn date" data-js-format="YYYY" data-php-format="Y" data-ruby-format="%Y"></a>
+								<a class="btn date" data-js-format="YYYY" data-php-format="Y" data-ruby-format="%Y" data-python-format="%Y"></a>
 								<p class="help-text">four digit</p>
 							</div>
 						</div> <!--end of .row-->
@@ -217,15 +218,15 @@
 								<p class="help-text">without leading zeros with suffix</p>
 							</div>
 							<div class="col-xs-4 col-sm-2">
-								<a class="btn date" data-js-format="MM" data-php-format="m" data-ruby-format="%m"></a>
+								<a class="btn date" data-js-format="MM" data-php-format="m" data-ruby-format="%m" data-python-format="%m"></a>
 								<p class="help-text">with leading zeros</p>
 							</div>
 							<div class="col-xs-4 col-sm-2">
-								<a class="btn date" data-js-format="MMM" data-php-format="M" data-ruby-format="%b"></a>
+								<a class="btn date" data-js-format="MMM" data-php-format="M" data-ruby-format="%b" data-python-format="%b"></a>
 								<p class="help-text">abbreviation</p>
 							</div>
 							<div class="col-xs-4 col-sm-2">
-								<a class="btn date" data-js-format="MMMM" data-php-format="F" data-ruby-format="%B"></a>
+								<a class="btn date" data-js-format="MMMM" data-php-format="F" data-ruby-format="%B" data-python-format="%B"></a>
 								<p class="help-text">full textual representation</p>
 							</div>
 						</div> <!--end of .row-->
@@ -245,7 +246,7 @@
 								<p class="help-text">without leading zeros (12 hour)</p>
 							</div>
 							<div class="col-xs-4 col-sm-2">
-								<a class="btn date live" data-js-format="hh" data-php-format="h" data-ruby-format="%I"></a>
+								<a class="btn date live" data-js-format="hh" data-php-format="h" data-ruby-format="%I" data-python-format="%I"></a>
 								<p class="help-text">with leading zeros (12 hour)</p>
 							</div>
 
@@ -254,7 +255,7 @@
 								<p class="help-text">without leading zeros (24 hour)</p>
 							</div>
 							<div class="col-xs-4 col-sm-2">
-								<a class="btn date live" data-js-format="HH" data-php-format="H" data-ruby-format="%H"></a>
+								<a class="btn date live" data-js-format="HH" data-php-format="H" data-ruby-format="%H" data-python-format="%H"></a>
 								<p class="help-text">with leading zeros (24 hour)</p>
 							</div>
 						</div> <!--end of .row-->
@@ -269,7 +270,7 @@
 								<p class="help-text">without leading zeros</p>
 							</div>
 							<div class="col-xs-4 col-sm-2">
-								<a class="btn date live" data-js-format="mm" data-php-format="i" data-ruby-format="%M"></a>
+								<a class="btn date live" data-js-format="mm" data-php-format="i" data-ruby-format="%M" data-python-format="%M"></a>
 								<p class="help-text">with leading zeros</p>
 							</div>
 						</div> <!--end of .row-->
@@ -284,7 +285,7 @@
 								<p class="help-text">without leading zeros</p>
 							</div>
 							<div class="col-xs-4 col-sm-2">
-								<a class="btn date live" data-js-format="ss" data-php-format="s" data-ruby-format="%S"></a>
+								<a class="btn date live" data-js-format="ss" data-php-format="s" data-ruby-format="%S" data-python-format="%S"></a>
 								<p class="help-text">with leading zeros</p>
 							</div>
 						</div> <!--end of .row-->
@@ -295,7 +296,7 @@
 						</div> <!--end of .row-->
 						<div class="row">
 							<div class="col-xs-4 col-sm-2">
-								<a class="btn date" data-js-format="A" data-php-format="A" data-ruby-format="%p"></a>
+								<a class="btn date" data-js-format="A" data-php-format="A" data-ruby-format="%p" data-python-format="%p"></a>
 								<p class="help-text">uppercase</p>
 							</div>
 							<div class="col-xs-4 col-sm-2">
@@ -314,7 +315,7 @@
 								<p class="help-text">Difference to GMT in hours with colon</p>
 							</div>
 							<div class="col-sm-2">
-								<a class="btn date" data-js-format="ZZ" data-php-format="O" data-ruby-format="%z"></a>
+								<a class="btn date" data-js-format="ZZ" data-php-format="O" data-ruby-format="%z" data-python-format="%z"></a>
 								<p class="help-text">Difference to GMT in hours</p>
 							</div>
 						</div> <!--end of .row-->
@@ -334,6 +335,7 @@
 									<code data-language="js" class="js hide">moment().format('<span></span>')</code>
 									<code data-language="php" class="php hide">date('<span></span>')</code>
 									<code data-language="ruby" class="ruby hide">Time.new().strftime "<span></span>"</code>
+									<code data-language="python" class="python hide">time.strftime('<span></span>')</code>
 
 								</div>
 								<div class="live-preview col-sm-6">
