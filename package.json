@@ -1,27 +1,30 @@
 {
-  "name": "date-time-generator",
+  "name": "date-time",
   "version": "0.0.1",
   "description": "",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/jonstuebe/date-time-generator.git"
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jon Stuebe",
-  "bugs": {
-    "url": "https://github.com/jonstuebe/date-time-generator/issues"
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "babel": "~5.8.23"
   },
-  "homepage": "https://github.com/jonstuebe/date-time-generator",
   "devDependencies": {
-    "node-sass": "~1.2.3",
-    "gulp-sass": "~1.1.0",
-    "gulp": "~3.8.10",
-    "node-bourbon": "~1.2.3",
-    "node-neat": "~1.3.0",
-    "gulp-changed": "~1.0.0",
-    "gulp-notify": "~2.0.1",
-    "gulp-autoprefixer": "~2.0.0",
-    "gulp-sourcemaps": "~1.2.8",
-    "gulp-rename": "~1.2.0",
-    "gulp-minify-css": "~0.3.11"
+    "gulp-babel": "~5.2.1",
+    "gulp-sourcemaps": "~1.6.0",
+    "gulp-concat": "~2.6.0",
+    "gulp": "~3.9.0",
+    "gulp-notify": "~2.2.0",
+    "gulp-rename": "~1.2.2",
+    "gulp-changed": "~1.3.0",
+    "node-neat": "~1.7.2",
+    "node-bourbon": "~4.2.3",
+    "gulp-autoprefixer": "~3.0.2",
+    "gulp-sass": "~2.0.4",
+    "gulp-minify-css": "~1.2.1",
+    "browser-sync": "~2.9.7",
+    "gulp-plumber": "~1.0.1"
   }
 }
