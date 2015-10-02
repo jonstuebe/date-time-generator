@@ -1,9 +1,7 @@
 'use strict';
 
-var languages = [{ name: 'js', value: 'Javascript', method: "moment().format('%%')" }, { name: 'php', value: 'PHP', method: "date('%%')" }];
+var languages = [{ name: 'js', value: 'Javascript', method: "moment().format('%%')" }, { name: 'php', value: 'PHP', method: "date('%%')" }, { name: 'ruby', value: 'Ruby', method: 'Time.new().strftime "%%"' }, { name: 'python', value: 'Python', method: "time.strftime('%%')" }];
 
-// 	{ name: 'ruby', value: 'Ruby'},
-// 	{ name: 'python', value: 'Python' }
 window.App = {};
 
 App.events = {
@@ -18,7 +16,16 @@ App.preview = [];
 App.jsFormat = [];
 App.activeLanguage = 'js';
 
+App.buildLanguages = function () {
+	languages.forEach(function (language) {
+		App.code[language.name] = [];
+	});
+	App.preview = App.code[App.activeLanguage];
+	App.events.codeUpdated.dispatch();
+};
+
 App.boot = function () {
+	App.buildLanguages();
 	App.keyboard();
 	App.ga();
 };
@@ -107,34 +114,139 @@ App.removeItem = function () {
 	App.events.codeUpdated.dispatch();
 };
 
+var presets = {
+	items: [{ formats: { js: 'dddd, MMMM D YYYY', php: 'l, F j Y', ruby: '%A, %B %e %Y', python: '%A, %B %d %Y' } }, { formats: { js: 'MM/DD/YYYY', php: 'm/d/Y', ruby: '%m/%d/%Y', python: '%m/%d/%Y' } }, { formats: { js: 'MMMM YYYY', php: 'F Y', ruby: '%B %Y', python: '%B %Y' } }, { formats: { js: 'YYYY-MM-DD HH:mm:ss', php: 'Y-m-d H:i:s', ruby: '%Y-%m-%d %H:%M:%S', python: '%Y-%m-%d %H:%M:%S' }, live: true }]
+};
+
 var sections = [{
 	title: 'Day of Month',
-	items: [{ content: 'without leading zeros', formats: { js: 'D', php: 'j' } }, { content: 'without leading zeros with suffix', formats: { js: 'Do', php: 'jS' } }, { content: '2 digits with leading zeros', formats: { js: 'DD', php: 'd' } }]
+	items: [{ content: 'without leading zeros', formats: { js: 'D', php: 'j', ruby: '%e' } }, { content: 'without leading zeros with suffix', formats: { js: 'Do', php: 'jS' } }, { content: '2 digits with leading zeros', formats: { js: 'DD', php: 'd', ruby: '%d', python: '%d' } }]
 }, {
 	title: 'Day of Week',
-	items: [{ content: 'without leading zeros', formats: { js: 'd', php: 'w' } }, { content: 'with leading zeros with suffix', formats: { js: 'do', php: '' } }, { content: 'two character abbreviation', formats: { js: 'dd', php: '' } }, { content: 'three character abbreviation', formats: { js: 'ddd', php: '' } }, { content: 'full textual representation', formats: { js: 'dddd', php: '' } }]
+	items: [{ content: 'without leading zeros', formats: { js: 'd', php: 'w', python: '%w' } }, { content: 'with leading zeros with suffix', formats: { js: 'do' } }, { content: 'two character abbreviation', formats: { js: 'dd' } }, { content: 'three character abbreviation', formats: { js: 'ddd', ruby: '%a', python: '%a' } }, { content: 'full textual representation', formats: { js: 'dddd', ruby: '%A', python: '%A' } }]
+}, {
+	title: 'Day of Year',
+	items: [{ content: 'without leading zeros', formats: { js: 'DDD', php: 'z' } }, { content: 'without leading zeros with suffix', formats: { js: 'DDDo' } }, { content: 'with leading zeros', formats: { js: 'DDDD', ruby: '%j', python: '%j' } }]
+}, {
+	title: 'Week of Year',
+	items: [{ content: 'without leading zeros', formats: { js: 'w' } }, { content: 'without leading zeros with suffix', formats: { js: 'wo' } }, { content: 'with leading zeros', formats: { js: 'ww', php: 'W', ruby: '%U', python: '%U' } }]
+}, {
+	title: 'Year',
+	items: [{ content: 'two digit', formats: { js: 'YY', php: 'y', ruby: '%y', python: '%y' } }, { content: 'four digit', formats: { js: 'YYYY', php: 'Y', ruby: '%Y', python: '%Y' } }]
+}, {
+	title: 'Month',
+	items: [{ content: 'without leading zeros', formats: { js: 'M', php: 'n', ruby: '%e' } }, { content: 'without leading zeros with suffix', formats: { js: 'Mo' } }, { content: 'with leading zeros', formats: { js: 'MM', php: 'm', ruby: '%m', python: '%m' } }, { content: 'abbreviation', formats: { js: 'MMM', php: 'M', ruby: '%b', python: '%b' } }, { content: 'full textual representation', formats: { js: 'MMMM', php: 'F', ruby: '%B', python: '%B' } }]
+}, {
+	title: 'Time',
+	items: []
+}, {
+	title: 'Hours',
+	items: [{ content: 'without leading zeros (12 hour)', formats: { js: 'h', php: 'g', ruby: '%1' }, live: true }, { content: 'with leading zeros (12 hour)', formats: { js: 'hh', php: 'h', ruby: '%I', python: '%I' }, live: true }, { content: 'without leading zeros (24 hour)', formats: { js: 'H', php: 'G', ruby: '%k' }, live: true }, { content: 'with leading zeros (24 hour)', formats: { js: 'HH', php: 'H', ruby: '%H', python: '%H' }, live: true }]
+}, {
+	title: 'Minutes',
+	items: [{ content: 'without leading zeros', formats: { js: 'm' }, live: true }, { content: 'with leading zeros', formats: { js: 'mm', php: 'i', ruby: '%M', python: '%M' }, live: true }]
+}, {
+	title: 'Seconds',
+	items: [{ content: 'without leading zeros', formats: { js: 's' }, live: true }, { content: 'with leading zeros', formats: { js: 'ss', php: 's', ruby: '%S', python: '%S' }, live: true }]
+}, {
+	title: 'AM/PM',
+	items: [{ content: 'uppercase', formats: { js: 'A', php: 'A', ruby: '%p', python: '%p' }, live: true }, { content: 'lowercase', formats: { js: 'a', php: 'a', ruby: '%P' }, live: true }]
+}, {
+	title: 'Timezone',
+	items: [{ content: 'Difference to GMT in hours with colon', formats: { js: 'Z', php: 'P', ruby: '%:z' } }, { content: 'Difference to GMT in hours', formats: { js: 'ZZ', php: 'O', ruby: '%z', python: '%z' } }]
 }];
+
+// mixins
+var SetIntervalMixin = {
+	componentWillMount: function componentWillMount() {
+		this.intervals = [];
+	},
+	setInterval: (function (_setInterval) {
+		function setInterval() {
+			return _setInterval.apply(this, arguments);
+		}
+
+		setInterval.toString = function () {
+			return _setInterval.toString();
+		};
+
+		return setInterval;
+	})(function () {
+		this.intervals.push(setInterval.apply(null, arguments));
+	}),
+	componentWillUnmount: function componentWillUnmount() {
+		this.intervals.map(clearInterval);
+	}
+};
+// end of mixins
 
 var Button = React.createClass({
 	displayName: 'Button',
 
+	mixins: [SetIntervalMixin],
 	getInitialState: function getInitialState() {
-		return { active: false };
+		return { active: false, format: this.getFormat() };
 	},
 	getFormat: function getFormat() {
 		return moment().format(this.props.formats.js);
 	},
 	handleClick: function handleClick(event) {
 		var formats = this.props.formats;
+
+		if (this.props.preset) {
+			App.code = {};
+			App.preview = [];
+			App.jsFormat = [];
+		}
+
 		App.addItem(formats);
 		App.events.ga.dispatch('clicked', 'button');
 	},
+	updateFormat: function updateFormat() {
+		var _format = this.getFormat();
+		this.setState({ format: _format });
+	},
+	componentDidMount: function componentDidMount() {
+		if (this.props.live) this.setInterval(this.updateFormat, 1000);
+	},
 	render: function render() {
+		var additionalClasses = '';
+		if (this.props.preset) additionalClasses += ' preset';
 		var activeClass = this.state.active ? ' is-active' : '';
 		return React.createElement(
 			'a',
-			{ className: 'btn date' + activeClass, onClick: this.handleClick },
-			this.getFormat()
+			{ className: 'btn date' + activeClass + additionalClasses, onClick: this.handleClick },
+			this.state.format
+		);
+	}
+});
+
+var Preset = React.createClass({
+	displayName: 'Preset',
+
+	getInitialState: function getInitialState() {
+		return { hidden: false };
+	},
+	getDefaultProps: function getDefaultProps() {
+		return { live: false };
+	},
+	render: function render() {
+		return React.createElement(Button, { formats: this.props.formats, live: this.props.live, preset: true });
+	}
+});
+
+var Presets = React.createClass({
+	displayName: 'Presets',
+
+	render: function render() {
+		var items = this.props.items;
+
+		return React.createElement(
+			'div',
+			{ className: 'col-xs-12' },
+			items.map(function (item) {
+				return React.createElement(Preset, { formats: item.formats, live: item.live });
+			})
 		);
 	}
 });
@@ -158,10 +270,10 @@ var Item = React.createClass({
 		return { hidden: false };
 	},
 	getDefaultProps: function getDefaultProps() {
-		return { content: '' };
+		return { content: '', live: false };
 	},
 	checkFormat: function checkFormat(language) {
-		if (this.props[language] == '') {
+		if (!this.props.formats[language]) {
 			this.setState({ hidden: true });
 		} else {
 			this.setState({ hidden: false });
@@ -182,7 +294,7 @@ var Item = React.createClass({
 		return React.createElement(
 			'div',
 			{ className: itemClass.join(' ') },
-			React.createElement(Button, { formats: this.props.formats }),
+			React.createElement(Button, { formats: this.props.formats, live: this.props.live }),
 			React.createElement(Description, { content: this.props.content })
 		);
 	}
@@ -198,7 +310,7 @@ var Items = React.createClass({
 			null,
 			data.map(function (item) {
 				if (data.length) {}
-				return React.createElement(Item, { width: 'small', formats: item.formats, content: item.content });
+				return React.createElement(Item, { width: 'small', formats: item.formats, live: item.live, content: item.content });
 			})
 		);
 	}
@@ -257,7 +369,8 @@ var Languages = React.createClass({
 	handleChange: function handleChange(event) {
 
 		App.events.languageUpdated.dispatch(event.target.value);
-		App.preview = App.code[event.target.value];
+		App.buildLanguages();
+		App.jsFormat = [];
 		App.events.codeUpdated.dispatch();
 		this.setState({ value: event.target.value });
 	},
@@ -276,7 +389,8 @@ var Languages = React.createClass({
 						language.value
 					);
 				})
-			)
+			),
+			React.createElement('span', null)
 		);
 	}
 });
@@ -323,12 +437,23 @@ var CodePreview = React.createClass({
 	displayName: 'CodePreview',
 
 	getInitialState: function getInitialState() {
-		return { value: '', hidden: false, beforeMethod: '', afterMethod: '' };
+		var _value = App.preview.join(''),
+		    _beforeMethod = '',
+		    _afterMethod = '';
+
+		languages.forEach(function (language, index) {
+			if (App.activeLanguage == language.name) {
+				var method = language.method.split('%%');
+				_beforeMethod = method[0];
+				_afterMethod = method[1];
+			}
+		});
+
+		return { value: _value, hidden: false, beforeMethod: _beforeMethod, afterMethod: _afterMethod };
 	},
 	updatePreview: function updatePreview() {
 
 		var self = this;
-
 		self.setState({ value: App.preview.join('') });
 
 		languages.forEach(function (language, index) {
@@ -415,6 +540,8 @@ App.boot();
 React.render(React.createElement(Sections, { sections: sections }), $('.row.sections')[0]);
 
 React.render(React.createElement(Preview, null), $('.preview')[0]);
+
+React.render(React.createElement(Presets, { items: presets.items }), $('.presets')[0]);
 
 React.render(React.createElement(Languages, { languages: languages }), $('.form-group.languages .input')[0]);
 //# sourceMappingURL=app.js.map
