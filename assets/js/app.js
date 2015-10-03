@@ -8,6 +8,7 @@ App.events = {
 	codeUpdated: new signals.Signal(),
 	languageUpdated: new signals.Signal(),
 	insertChar: new signals.Signal(),
+	preview: new signals.Signal(),
 	ga: new signals.Signal()
 };
 
@@ -15,6 +16,10 @@ App.code = {};
 App.preview = [];
 App.jsFormat = [];
 App.activeLanguage = 'js';
+
+App.mobileDetect = function () {
+	return window.innerWidth <= 700 ? true : false;
+};
 
 App.buildLanguages = function () {
 	languages.forEach(function (language) {
@@ -201,6 +206,10 @@ var Button = React.createClass({
 
 		App.addItem(formats);
 		App.events.ga.dispatch('clicked', 'button');
+
+		if (App.mobileDetect()) {
+			App.events.preview.dispatch('show');
+		}
 	},
 	updateFormat: function updateFormat() {
 		var _format = this.getFormat();
@@ -503,6 +512,9 @@ var CodePreview = React.createClass({
 var Preview = React.createClass({
 	displayName: 'Preview',
 
+	getInitialState: function getInitialState() {
+		return { visible: false };
+	},
 	handleKeys: function handleKeys(event) {
 		if (event.keyCode == 8) // backspace
 			{
@@ -516,20 +528,58 @@ var Preview = React.createClass({
 	insertChar: function insertChar(char) {
 		App.addItem(char, true);
 	},
+	showPreview: function showPreview() {
+		this.setState({ visible: true });
+	},
+	hidePreview: function hidePreview() {
+		this.setState({ visible: false });
+	},
+	togglePreview: function togglePreview() {
+		if (this.state.visible) {
+			this.hidePreview();
+		} else {
+			this.showPreview();
+		}
+	},
+	handleEvent: function handleEvent(type) {
+		if (type == 'show') this.showPreview();
+		if (type == 'hide') this.hidePreview();
+		if (type == 'toggle') this.togglePreview();
+	},
+	handleResize: function handleResize() {
+		if (App.mobileDetect()) {
+			this.hidePreview();
+		} else {
+			this.showPreview();
+		}
+	},
 	componentDidMount: function componentDidMount() {
-		$(document).on('keyup', this.handleKeys);
+		$(document).bind('keyup', this.handleKeys);
+		$(window).on('resize', this.handleResize);
+		App.events.preview.add(this.handleEvent);
 		App.events.insertChar.add(this.insertChar);
 	},
 	componentWillUnmount: function componentWillUnmount() {
-		$(document).off('keyup', this.handleKeys);
+		$(document).unbind('keyup', this.handleKeys);
+		$(window).off('resize', this.handleResize);
+		App.events.preview.remove(this.handleEvent);
 		App.events.insertChar.remove(this.insertChar);
 	},
 	render: function render() {
+		var visible = this.state.visible ? ' is-visible' : '';
 		return React.createElement(
 			'div',
-			null,
-			React.createElement(CodePreview, { languages: languages }),
-			React.createElement(LivePreview, null)
+			{ className: "fixed" + visible },
+			React.createElement(
+				'div',
+				{ className: 'container-fluid' },
+				React.createElement(
+					'div',
+					{ className: 'row preview' },
+					React.createElement(CodePreview, { languages: languages }),
+					React.createElement(LivePreview, null)
+				)
+			)
 		);
 	}
 });
@@ -539,7 +589,7 @@ App.boot();
 
 React.render(React.createElement(Sections, { sections: sections }), $('.row.sections')[0]);
 
-React.render(React.createElement(Preview, null), $('.preview')[0]);
+React.render(React.createElement(Preview, null), $('#fixed')[0]);
 
 React.render(React.createElement(Presets, { items: presets.items }), $('.presets')[0]);
 

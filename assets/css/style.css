@@ -1467,25 +1467,42 @@ code {
 
 @media screen and (max-width: 700px) {
   .fixed {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    margin-top: 2em;
-    background-color: #6DBD99; }
-    .fixed .container-fluid {
-      padding: 0; }
-    .fixed:before, .fixed:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      background-color: #6DBD99;
-      width: 500px;
-      height: 100%; }
-    .fixed:before {
-      left: 100%; }
-    .fixed:after {
-      right: 100%; }
-  .preview-push {
-    display: none; } }
+    transition: transform 225ms linear, opacity 225ms linear;
+    opacity: 0;
+    transform: translateY(100%); }
+    .fixed.is-visible {
+      opacity: 1;
+      transform: translateY(0); }
+  /* .container-fluid {
+		overflow-x: hidden;
+	}
+	
+	.fixed {
+		
+		position: relative;
+		bottom: auto;
+
+		left: -2.5em;
+	    margin-top: 2em;
+	    box-sizing: content-box;
+	    padding: 0 2.5em 2.5em;
+		
+		.container-fluid {
+			padding: 0;
+		}
+		
+		background-color: $color-green;
+		
+	}
+
+
+	.live-preview {
+		box-sizing: border-box;
+
+	}
+	
+	.preview-push {
+		display: none;
+	} */ }
 
 /*# sourceMappingURL=style.css.map */
