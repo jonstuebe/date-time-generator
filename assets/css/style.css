@@ -1469,9 +1469,11 @@ code {
   .fixed {
     transition: transform 225ms linear, opacity 225ms linear;
     opacity: 0;
+    visibility: hidden;
     transform: translateY(100%); }
     .fixed.is-visible {
       opacity: 1;
+      visibility: visible;
       transform: translateY(0); }
   /* .container-fluid {
 		overflow-x: hidden;
