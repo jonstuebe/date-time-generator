@@ -3,99 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Date/Time Generator (react)</title>
-	<link rel="stylesheet" href="assets/css/style.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-
 </head>
 <body>
-	
-	<div class="container-fluid">
 
-		<div class="row">
+	<div id="root"></div>
+    <script src="/static/bundle.js"></script>
 
-			<div class="row">
-				<div class="col-xs-12">
-					<header>
-						<div class="row">
-							<div class="col-xs-12">
-								<h1>Date/Time Generator</h1>
-								<h4>by <a href="http://jonstuebe.com/" target="_blank">Jon Stuebe</a></h4>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-sm-8">
-								<p>A Simple Date/Time string format generator built in html/js.</p>
-								
-								<p>Click on any buttons below to generate the code string and see a live preview. To add any symbols just type them in your browser. To undo hit the backspace key.</p>
-
-								<a class="twitter-share-button" href="https://twitter.com/share">Tweet</a>
-								<script>
-								window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
-								</script>
-								<iframe src="https://ghbtns.com/github-btn.html?user=jonstuebe&repo=date-time-generator&type=star&count=true&v=2" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
-
-							</div>
-						</div>
-					</header>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="hr"></div>
-				</div>
-			</div>
-
-		</div>
-
-		<div class="row">
-
-			<form action="#">
-
-				<div class="row">
-					<div class="form-group col-xs-12 languages">
-						<label for="language">Language</label>
-						<div class="input"></div>
-						<span class="directions directions-js hide">To simplify date methods in javascript the <a href="http://momentjs.com/" target="_blank">moment.js</a> library is required.</span>
-					</div>
-
-				</div>
-				<!--end of .row-->
-				<div class="row">
-					
-					<div class="col-xs-12">
-						<div class="row">
-							<div class="col-xs-12">
-								<h4>Presets</h4>
-							</div>
-						</div>
-						<div class="row presets">
-							
-						</div>
-					</div>
-
-				</div> <!-- end of .row -->
-
-				<div class="row sections">
-				</div>
-
-				<div class="row">
-					<div class="preview-push"></div>
-					<div id="fixed"></div>
-					<!--end of .fixed-->
-				</div>
-
-			</form>
-
-		</div>
-
-	</div>
-
-	<script src="assets/js/vendor/react.min.js"></script>
-	<script src="assets/js/vendor/jquery.min.js"></script>
-	<script src="assets/js/vendor/jquery.hotkeys.js"></script>
-	<script src="assets/js/vendor/signals.min.js"></script>
-	<script src="assets/js/vendor/moment.js"></script>
-	<script src="assets/js/app.js"></script>
 </body>
 </html>
