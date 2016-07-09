@@ -57,6 +57,11 @@ const App = React.createClass({
         }
     },
     componentWillMount() {
+        const previousState = JSON.parse(localStorage.getItem('app'));
+        if(previousState) {
+            this.setState(previousState);
+        }
+
         this.props.bindShortcut('backspace', this.onBackspace);
         this.props.bindShortcut([':',',','/','-','.','(',')','space'], this.onShortcuts);
 
@@ -67,6 +72,13 @@ const App = React.createClass({
                 this.setState({ livePreview: moment().format(this.renderCode('js')) });
             }
         }, 1000);
+    },
+    componentDidUpdate() {
+        localStorage.setItem('app', JSON.stringify(this.state));
+    },
+    componentWillUnmount() {
+        this.props.unbindShortcut('backspace', this.onBackspace);
+        this.props.unbindShortcut([':',',','/','-','.','(',')','space'], this.onShortcuts);
     },
     onBackspace(e) {
         let preview = this.state.preview;
