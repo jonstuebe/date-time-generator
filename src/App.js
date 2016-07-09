@@ -5,15 +5,16 @@ import { mouseTrap } from 'react-mousetrap';
 
 import styles from '../assets/sass/style.scss';
 
+import ItemContainer from './containers/ItemContainer';
+
 import Header from './components/Header';
+
+import Dropdown from './components/Dropdown';
+import Directions from './components/Directions';
 
 import Row from './components/Row';
 import Col from './components/Col';
 
-import Item from './components/Item';
-import Heading from './components/Heading';
-import Dropdown from './components/Dropdown';
-import Directions from './components/Directions';
 import Preview from './components/Preview';
 
 const languages = {
@@ -137,106 +138,11 @@ const App = React.createClass({
                         </div>
                     </Col>
                 </Row>
-                <Row>
-                    <Col xs={12}>
-                        <Heading>Presets</Heading>
-                        <Item
-                            preset={true}
-                            language={this.state.language}
-                            formats={{
-                                js: 'dddd, MMMM D YYYY',
-                                php: 'l, F j Y',
-                                ruby: '%A, %B %e %Y',
-                                python: '%A, %B %d %Y',
-                            }}
-                            onClick={this.selectItem}
-                        />
-                        <Item
-                            preset={true}
-                            language={this.state.language}
-                            formats={{
-                                js: 'MM/DD/YYYY',
-                                php: 'm/d/Y',
-                                ruby: '%m/%d/%Y',
-                                python: '%m/%d/%Y',
-                            }}
-                            onClick={this.selectItem}
-                        />
-                        <Item
-                            preset={true}
-                            language={this.state.language}
-                            formats={{
-                                js: 'MMMM YYYY',
-                                php: 'F Y',
-                                ruby: '%B %Y',
-                                python: '%B %Y',
-                            }}
-                            onClick={this.selectItem}
-                        />
-                        <Item
-                            preset={true}
-                            language={this.state.language}
-                            formats={{
-                                js: 'MMM D, YYYY',
-                                php: 'M j, Y',
-                                ruby: '%B %e, %Y',
-                                python: '%B %d, %Y',
-                            }}
-                            onClick={this.selectItem}
-                        />
-                        <Item
-                            preset={true}
-                            live={true} language={this.state.language}
-                            formats={{
-                                js: 'YYYY-MM-DD HH:mm:ss',
-                                php: 'Y-m-d H:i:s',
-                                ruby: '%Y-%m-%d %H:%M:%S',
-                                python: '%Y-%m-%d %H:%M:%S',
-                            }}
-                            onClick={this.selectItem}
-                        />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs={12}>
-                        <Heading>Day of Month</Heading>
-                        <Row>
-                            <Item
-                                language={this.state.language}
-                                desc='2 digits with leading zeros'
-                                formats={{
-                                    js: 'D',
-                                    php: 'j',
-                                    ruby: '%e',
-                                }}
-                                colWrapper={true}
-                                onClick={this.selectItem}
-                            />
-                            <Item
-                                language={this.state.language}
-                                desc='without leading zeros with suffix'
-                                formats={{
-                                    js: 'Do',
-                                    php: 'jS',
-                                }}
-                                colWrapper={true}
-                                onClick={this.selectItem}
-                            />
-                            <Item
-                                language={this.state.language}
-                                desc='2 digits with leading zeros'
-                                formats={{
-                                    js: 'DD',
-                                    php: 'd',
-                                    ruby: '%d',
-                                    python: '%d',
-                                }}
-                                colWrapper={true}
-                                onClick={this.selectItem}
-                            />
-                        </Row>
-                    </Col>
-                </Row>
+
+                <ItemContainer
+                    language={this.state.language}
+                    selectItem={this.selectItem}
+                />
 
                 <Preview
                     format={languages[this.state.language].previewFormat}
