@@ -1,6 +1,6 @@
 # Date/Time Generator
 
-A Simple Date/Time string format generator built in html/js.
+A Simple Date/Time string format generator built in HTML/React.
 
 ## Supports:
 
@@ -20,7 +20,7 @@ If you have any cool ideas, bugs you notice or anything else really, please Down
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Jon Stuebe
+Copyright (c) 2016 Jon Stuebe
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
