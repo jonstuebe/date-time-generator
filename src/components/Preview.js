@@ -13,11 +13,11 @@ const Preview = React.createClass({
                             <div className="code-preview col-sm-6">
                                 <h4>{`Code (${this.props.language})`}</h4>
                                 <input type="submit" id="copy" value="Copy" onClick={this.props.onCopy} />
-                                <code>{this.props.format}</code>
+                                <code>{this.props.format.replace('$',this.props.code)}</code>
                             </div>
                             <div className="live-preview col-sm-6">
                                 <h4>Live Preview</h4>
-                                <input type="text" disabled className="input-text disabled" value="" />
+                                <input type="text" disabled className="input-text disabled" value={this.props.live} />
                                 <input type="submit" value="Reset" className="reset" onClick={this.props.onReset} />
                             </div>
                         </Row>

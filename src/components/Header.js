@@ -13,7 +13,7 @@ const Header = () => {
                 <div className="col-sm-8">
                     <p>A Simple Date/Time string format generator built in html/js.</p>
                     <p>Click on any buttons below to generate the code string and see a live preview. To add any symbols just type them in your browser. To undo hit the backspace key.</p>
-                    <iframe src="https://ghbtns.com/github-btn.html?user=jonstuebe&amp;repo=date-time-generator&amp;type=star&amp;count=true&amp;v=2" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+                    <iframe src="https://ghbtns.com/github-btn.html?user=jonstuebe&amp;repo=date-time-generator&amp;type=star&amp;count=true&amp;v=2" frameBorder="0" scrolling="0" width="170px" height="20px"></iframe>
                 </div>
             </div>
         </header>

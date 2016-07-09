@@ -37,6 +37,11 @@ const Item = React.createClass({
         }
 
     },
+    onClick(e) {
+
+        this.props.onClick(this.props.formats);
+        e.preventDefault();
+    },
     render() {
 
         if(!this.props.formats[this.props.language]) return null;
@@ -45,7 +50,7 @@ const Item = React.createClass({
 
         let component = (
             <span style={presetStyle}>
-                <Button>{this.state.label}</Button>
+                <Button onClick={this.onClick}>{this.state.label}</Button>
                 <p className="help-text">{this.props.desc}</p>
             </span>
         )
