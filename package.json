@@ -5,14 +5,15 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
-    "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
-    "build": "npm run clean && npm run build:webpack",
-    "start": "node devServer.js",
+    "build:webpack": "NODE_ENV=production webpack --config webpack.config.js",
+    "build": "npm run clean && cp -r src/index.html ./index.html && npm run build:webpack",
+    "start": "cp -r src/dev.html ./index.html && node devServer.js",
     "lint": "eslint src"
   },
   "author": "Jon Stuebe",
   "license": "BSD-2-Clause",
   "dependencies": {
+    "bluebird": "^3.4.1",
     "css-loader": "^0.23.1",
     "history": "^1.17.0",
     "lodash": "^4.13.1",

@@ -3,7 +3,7 @@ import moment from 'moment';
 import _ from 'lodash';
 import { mouseTrap } from 'react-mousetrap';
 
-import styles from '../assets/sass/style.scss';
+import styles from './sass/style.scss';
 
 import ItemContainer from './containers/ItemContainer';
 
@@ -21,12 +21,12 @@ const languages = {
     js: {
         name: 'Javascript',
         directions: 'To simplify date methods in javascript the <a href="http://momentjs.com" target="_blank">moment.js</a> library is required.',
-        previewFormat: "moment().format('$')",
+        previewFormat: 'moment().format(\'$\')',
     },
     php: {
         name: 'PHP',
         directions: 'php documentation on the <a href="http://php.net/manual/en/function.date.php" target="_blank">date method</a>',
-        previewFormat: "date('$')",
+        previewFormat: 'date(\'$\')',
     },
     ruby: {
         name: 'Ruby',
@@ -36,7 +36,7 @@ const languages = {
     python: {
         name: 'Python',
         directions: 'python documentation on the <a href="https://docs.python.org/2/library/datetime.html#strftime-and-strptime-behavior" target="_blank">strftime method</a>',
-        previewFormat: "time.strftime('$')",
+        previewFormat: 'time.strftime(\'$\')',
     },
 };
 
@@ -57,8 +57,8 @@ const App = React.createClass({
         }
     },
     componentWillMount() {
-        this.props.bindShortcut('space', this.onSpace);
         this.props.bindShortcut('backspace', this.onBackspace);
+        this.props.bindShortcut([':',',','/','-','.','(',')','space'], this.onShortcuts);
 
         setInterval(() => {
             if(this.state.preview.length == 0) {
@@ -68,12 +68,6 @@ const App = React.createClass({
             }
         }, 1000);
     },
-    onSpace(e) {
-        let preview = this.state.preview;
-        preview.push({ key: true, value: ' ' });
-        this.setState({ preview });
-        e.preventDefault();
-    },
     onBackspace(e) {
         let preview = this.state.preview;
         preview.pop();
@@ -82,6 +76,40 @@ const App = React.createClass({
     },
     onLanguageSelect(e) {
         this.setState({ language: e.target.value });
+    },
+    onShortcuts(e) {
+
+        let preview = this.state.preview;
+
+        switch (e.code) {
+            case 'Space':
+                preview.push({ key: true, value: ' ' });
+                break;
+            case 'Comma':
+                preview.push({ key: true, value: ',' });
+                break;
+            case 'Semicolon':
+                preview.push({ key: true, value: ':' });
+                break;
+            case 'Period':
+                preview.push({ key: true, value: '.' });
+                break;
+            case 'Slash':
+                preview.push({ key: true, value: '/' });
+                break;
+            case 'Minus':
+                preview.push({ key: true, value: '-' });
+                break;
+            case 'Digit9':
+                preview.push({ key: true, value: '(' });
+                break;
+            case 'Digit0':
+                preview.push({ key: true, value: ')' });
+                break;
+        }
+
+        this.setState({ preview });
+        e.preventDefault();
     },
     selectItem(formats) {
         let preview = this.state.preview;
