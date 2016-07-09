@@ -10,7 +10,9 @@ A Simple Date/Time string format generator built in HTML/React.
 
 ### Features:
 
-- Page remembers your clicks on reload (Coming Soon)
+- Switch between languages and keep your chosen formats
+- Supports typing of symbols
+- Page remembers your clicks on reload
 
 ### Ideas, Forks, Issues
 
