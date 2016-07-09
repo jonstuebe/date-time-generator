@@ -1,4 +1,5 @@
 import React from 'react';
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 import Row from './Row';
 
@@ -12,7 +13,9 @@ const Preview = React.createClass({
                         <Row>
                             <div className="code-preview col-sm-6">
                                 <h4>{`Code (${this.props.language})`}</h4>
-                                <input type="submit" id="copy" value="Copy" onClick={this.props.onCopy} />
+                                <CopyToClipboard text={this.props.code}>
+                                    <input type="submit" id="copy" value="Copy" />
+                                </CopyToClipboard>
                                 <code>{this.props.format.replace('$',this.props.code)}</code>
                             </div>
                             <div className="live-preview col-sm-6">

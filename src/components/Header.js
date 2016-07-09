@@ -11,8 +11,12 @@ const Header = () => {
             </div>
             <div className="row">
                 <div className="col-sm-8">
-                    <p>A Simple Date/Time string format generator built in html/js.</p>
+                    <p>A Simple Date/Time string format generator built in Html/ReactJs.</p>
                     <p>Click on any buttons below to generate the code string and see a live preview. To add any symbols just type them in your browser. To undo hit the backspace key.</p>
+                    <span style={{ marginRight: 10 }}>
+                        <a className="twitter-share-button" href="https://twitter.com/share">Tweet</a>
+                    </span>
+
                     <iframe src="https://ghbtns.com/github-btn.html?user=jonstuebe&amp;repo=date-time-generator&amp;type=star&amp;count=true&amp;v=2" frameBorder="0" scrolling="0" width="170px" height="20px"></iframe>
                 </div>
             </div>
