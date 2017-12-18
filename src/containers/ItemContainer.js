@@ -76,7 +76,7 @@ const ItemContainer = React.createClass({
                         <Row>
                             <Item
                                 language={this.props.language}
-                                desc='2 digits with leading zeros'
+                                desc='2 digits without leading zeros'
                                 formats={{
                                     js: 'D',
                                     php: 'j',
