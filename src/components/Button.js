@@ -1,15 +1,13 @@
-import React from 'react';
+import React from "react";
 
-const Button = React.createClass({
-    render() {
-
-        let classNames = [ 'btn' ];
-        if(this.props.preset) classNames.push('preset');
-
-        return (
-            <a className={classNames.join(' ')} onClick={this.props.onClick}>{this.props.children}</a>
-        );
-    }
-});
+const Button = ({ preset, onClick, children }) => {
+  let classNames = ["btn"];
+  if (preset) classNames.push("preset");
+  return (
+    <a className={classNames.join(" ")} onClick={onClick}>
+      {children}
+    </a>
+  );
+};
 
 export default Button;

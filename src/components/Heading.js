@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from "react";
 
-const Heading = React.createClass({
-    render() {
-        return <h4>{this.props.children}</h4>;
-    }
-});
+class Heading extends Component {
+  render() {
+    return <h4>{this.props.children}</h4>;
+  }
+}
 
 export default Heading;

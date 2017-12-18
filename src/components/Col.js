@@ -1,24 +1,15 @@
-import React from 'react';
+import React from "react";
 
-const Col = React.createClass({
+const Col = ({ xs, sm, md, lg, children }) => {
+  let theClasses = [];
+  let prefix = "col-";
 
-    render(){
+  if (xs) theClasses.push(`${prefix}xs-${xs}`);
+  if (sm) theClasses.push(`${prefix}sm-${sm}`);
+  if (md) theClasses.push(`${prefix}md-${md}`);
+  if (lg) theClasses.push(`${prefix}lg-${lg}`);
 
-        let theClasses = [];
-        let prefix = 'col-';
-
-        if(this.props.xs) theClasses.push(`${prefix}xs-${this.props.xs}`);
-        if(this.props.sm) theClasses.push(`${prefix}sm-${this.props.sm}`);
-        if(this.props.md) theClasses.push(`${prefix}md-${this.props.md}`);
-        if(this.props.lg) theClasses.push(`${prefix}lg-${this.props.lg}`);
-
-        return (
-            <div className={theClasses.join(' ')}>
-                {this.props.children}
-            </div>
-        );
-    }
-
-})
+  return <div className={theClasses.join(" ")}>{children}</div>;
+};
 
 export default Col;
